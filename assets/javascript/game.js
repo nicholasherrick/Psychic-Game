@@ -4,7 +4,8 @@ var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l
 
 // Variables for wins and losses
 var wins = 0;
-var losses =0;
+var losses = 0;
+var guesses = 9;
 
 // variables for html elements
 
@@ -32,7 +33,12 @@ var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.l
 
 if ((userGuess === "a") || (userGuess === "b") || (userGuess === "c") || (userGuess === "d") || (userGuess === "e") || (userGuess === "f") || (userGuess === "g") || (userGuess === "h") || (userGuess === "i") || (userGuess === "j") || (userGuess === "k") || (userGuess === "l") || (userGuess === "m") || (userGuess === "n") || (userGuess === "o") || (userGuess === "p") || (userGuess === "q") || (userGuess === "r") || (userGuess === "s") || (userGuess === "t") || (userGuess === "u") || (userGuess === "v") || (userGuess === "w") || (userGuess === "x") || (userGuess === "y") || (userGuess === "z")) {
 
+    // Display guesses, guesses remaining, wins, losses
+
     userGuessesText.textContent = "Your Guesses so far:" + userGuess;
-    
+    userGuessesRemainingText = "Guesses remaining:" + guesses
+    userWinsText = "Wins:" + wins
+    userLossesText = "Losses:" + losses
+
 }
 
