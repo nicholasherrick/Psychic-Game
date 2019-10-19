@@ -13,6 +13,9 @@ Example: [CLICK HERE](https://nicholasherrick.github.io/Psychic-Game/.) to view 
 ## Build Tools
 
 *HTML
+
 *CSS
+
 *Bootstrap
+
 *Javascript
