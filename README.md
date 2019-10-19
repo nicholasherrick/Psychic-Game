@@ -1,14 +1,14 @@
 # Psychic-Game
 
-##About
+## About
 
 What it's about
 
-##Demo
+## Demo
 
 Example: put link here
 
-##Build Tools
+## Build Tools
 
 *HTML
 *CSS
