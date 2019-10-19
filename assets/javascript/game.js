@@ -30,11 +30,13 @@ document.onkeyup = function(event) {
 
     // Only allows valid letter inputs
 
-    if (computerChoices.includes(event.key.toLowerCase())){
+    if (computerChoices.includes(event.key.toLowerCase())) {
 
         // Sets variable for user guess
 
         var userGuess = event.key;
+
+        var doubleGuess = guessed.includes(userGuess);
 
         // Displays user guesses in the blank array
 
@@ -55,12 +57,29 @@ document.onkeyup = function(event) {
             losses++;
             reset();
         }
-        
+
+        // Ensures you don't guess the same letter multiple times
+
+        if (doubleGuess === true) {
+            alert("You already guessed that letter");
+            guesses++;
+            guessed.pop();
+
+        }
+
+        // resets the game by reloading the page
+
+        document.getElementById("reset-button").onclick=function() {
+            window.location.reload(true);
+        }
         // Display guessed, guesses remaining, wins, losses
 
         userGuessesText.textContent = "Already Guessed: " + guessed;
         userGuessesRemainingText.textContent = "Guesses remaining: " + guesses;
         userWinsText.textContent = "Wins: " + wins;
         userLossesText.textContent = "Losses: " + losses;
+
+
     }
+
 }
