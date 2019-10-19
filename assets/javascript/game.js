@@ -1,65 +1,66 @@
-// Array that lists all options
+// Variables (Global)
 
-var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",];
-
-// Variables for wins and losses
 var wins = 0;
 var losses = 0;
 var guesses = 9;
+var guessed = [];
+var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",];
+var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
-// variables for html elements
+// Resets after a win or loss
 
-var userGuessesText = document.getElementById("user-guesses");
-var userGuessesRemainingText = document.getElementById("guesses-remaining");
-var userWinsText = document.getElementById("user-wins");
-var userLossesText = document.getElementById("user-losses");
+var reset = function() {
+    guesses = 9;
+    guessed = [];
+    computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+    console.log("computer guess was: " + computerGuess);
+}
 
-// Key press function
+// Key press function to start game
 
 document.onkeyup = function(event) {
 
-    var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",];
-
-
+    // Html variables
 
     var userGuessesText = document.getElementById("user-guesses");
     var userGuessesRemainingText = document.getElementById("guesses-remaining");
     var userWinsText = document.getElementById("user-wins");
     var userLossesText = document.getElementById("user-losses");
+    var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",];
 
-    // Determine which key was pressed
+    // Only allows valid letter inputs
 
-    var userGuess = event.key;
-    console.log(userGuess);
+    if (computerChoices.includes(event.key.toLowerCase())){
 
-    // Computer randomly choses an option from the options array
+        // Sets variable for user guess
 
-    var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-    console.log(computerGuess);
+        var userGuess = event.key;
 
-    // Only run the following block if an option is pressed
+        // Displays user guesses in the blank array
 
-    if ((userGuess === "a") || (userGuess === "b") || (userGuess === "c") || (userGuess === "d") || (userGuess === "e") || (userGuess === "f") || (userGuess === "g") || (userGuess === "h") || (userGuess === "i") || (userGuess === "j") || (userGuess === "k") || (userGuess === "l") || (userGuess === "m") || (userGuess === "n") || (userGuess === "o") || (userGuess === "p") || (userGuess === "q") || (userGuess === "r") || (userGuess === "s") || (userGuess === "t") || (userGuess === "u") || (userGuess === "v") || (userGuess === "w") || (userGuess === "x") || (userGuess === "y") || (userGuess === "z")) {
-
+        guessed.push(userGuess);
+    
         // Determine win or loss
 
         if (userGuess === computerGuess) {
             wins++;
+            reset();
         }
-        else if (guesses === 0) {
-            losses++;
-        }
-        else {
-            guesses--
-        };
         
-        // Display guesses, guesses remaining, wins, losses
+        else if (userGuess !== computerGuess) {
+            guesses--;
+        }
 
-        userGuessesText.textContent = "Your Guesses so far: " + userGuess;
+        if (guesses < 1) {
+            losses++;
+            reset();
+        }
+        
+        // Display guessed, guesses remaining, wins, losses
+
+        userGuessesText.textContent = "Already Guessed: " + guessed;
         userGuessesRemainingText.textContent = "Guesses remaining: " + guesses;
         userWinsText.textContent = "Wins: " + wins;
         userLossesText.textContent = "Losses: " + losses;
-
-    };
-};
-
+    }
+}
