@@ -10,6 +10,8 @@ This application makes use of javascript to create a game in which the computer 
 
 Example: [CLICK HERE](https://nicholasherrick.github.io/Psychic-Game/.) to view the application
 
+![Code](code.png)
+
 ## Build Tools
 
 *HTML
