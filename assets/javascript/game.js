@@ -46,6 +46,7 @@ document.onkeyup = function(event) {
 
         if (userGuess === computerGuess) {
             wins++;
+            alert("You Won!");
             reset();
         }
         
@@ -55,6 +56,7 @@ document.onkeyup = function(event) {
 
         if (guesses < 1) {
             losses++;
+            alert("You Lost!");
             reset();
         }
 
